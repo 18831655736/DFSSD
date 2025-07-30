@@ -1421,53 +1421,15 @@ class WIoU_Scale:
 
 class PseudoLabeling:
     def __init__(self, ema_decay=0.999, initial_threshold=0.5):
-        # EMA相关配置
-        self.ema_decay = ema_decay  # EMA的衰减率
-        self.ema_threshold = initial_threshold  # 初始阈值
-        self.ema_confidences = defaultdict(float)  # 用于保存每个类别的EMA置信度
-        self.ema_classes = defaultdict(float)  # 用于保存每个类别的EMA计数
+        self.ema_decay = ema_decay  
+        self.ema_threshold = initial_threshold 
+        self.ema_confidences = defaultdict(float) 
+        self.ema_classes = defaultdict(float)  
 
     def update_ema(self, confidences, labels):
-        """
-        更新EMA置信度和类别阈值。
-        confidences: 当前迭代的置信度（例如模型的输出概率）
-        labels: 当前图像的类别标签
-        """
-        for conf, label in zip(confidences, labels):
-            # 对每个类别的置信度进行EMA更新
-            self.ema_confidences[label] = self.ema_confidences[label] * self.ema_decay + (1 - self.ema_decay) * conf
-            self.ema_classes[label] += 1
-
+        pass
     def get_dynamic_threshold(self, class_idx):
-        """
-        根据EMA的置信度更新阈值。
-        每个类别的阈值随着训练进行而逐渐增加，避免在初期使用不可靠的伪标签。
-        """
-        if class_idx in self.ema_confidences:
-            # 根据EMA置信度动态调整阈值，逐步增加阈值，确保只接受高置信度的伪标签
-            dynamic_threshold = max(self.ema_confidences[class_idx], self.ema_threshold)
-        else:
-            dynamic_threshold = self.ema_threshold  # 默认的初始阈值
-
-        return dynamic_threshold
+       pass
 
     def filter_pseudo_labels(self, pseudo_labels, confidences, labels):
-        """
-        根据动态阈值过滤伪标签。
-        pseudo_labels: 伪标签
-        confidences: 每个伪标签的置信度
-        labels: 类别标签
-        """
-        valid_mask = []
-        for pseudo_label, conf, label in zip(pseudo_labels, confidences, labels):
-            # 动态根据类别和EMA更新的阈值来判断
-            dynamic_threshold = self.get_dynamic_threshold(label)
-
-            # 如果置信度大于动态阈值，则接受伪标签
-            if conf >= dynamic_threshold:
-                valid_mask.append(True)
-            else:
-                valid_mask.append(False)
-
-        # 返回有效的伪标签
-        return pseudo_labels[valid_mask], confidences[valid_mask], labels[valid_mask]
+       pass
