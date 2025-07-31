@@ -36,3 +36,28 @@ To install the required dependencies, use the following:
 
 ```bash
 pip install -r requirements.txt
+
+## Usage
+
+### Data Preparation
+
+1. **Dataset**: This repository uses the **CR7-DET** dataset for training and testing. The dataset can be downloaded from the following link:
+
+   - [CR7-DET Dataset](<INSERT_YOUR_DATASET_LINK_HERE>)
+
+2. **Data Splitting**: 
+   - The **CR7-DET** dataset is split into **three subsets**: **training**, **validation**, and **testing**.
+   - The data split is **80% for training**, **10% for validation**, and **10% for testing**. This ensures a balanced distribution for training the model, validating during training, and evaluating the final model's performance.
+   - We use the **validation** set during training for hyperparameter tuning and model performance evaluation. The **test** set is used only for final evaluation after training is complete.
+
+3. **Preprocessing**: 
+   - The dataset undergoes several preprocessing steps, including resizing the images to a fixed size, normalization, and augmentation. The preprocessing steps are implemented in `data/preprocessing.py`.
+   - You can adjust the preprocessing settings by modifying the configuration in the script.
+
+### Training
+
+To train the model, use the following command:
+
+```bash
+python train.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset>
+
