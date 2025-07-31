@@ -30,9 +30,10 @@ Key features:
 - PyTorch >= 1.7
 - CUDA (optional for GPU acceleration)
 
-### Installing Dependencies
+### Installing Dependencies 
+   '''bash
 
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 #### Data Preparation
 
@@ -53,13 +54,4 @@ pip install -r requirements.txt
 
 To train the model, use the following command:
 
-```bash
 python train.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset>
-
-To install the required dependencies, use the following:
-
-
-
-
-
-
