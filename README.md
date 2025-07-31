@@ -32,14 +32,9 @@ Key features:
 
 ### Installing Dependencies
 
-To install the required dependencies, use the following:
-
-```bash
 pip install -r requirements.txt
 
-## Usage
-
-### Data Preparation
+#### Data Preparation
 
 1. **Dataset**: This repository uses the **CR7-DET** dataset for training and testing. The dataset can be downloaded from the following link:
 
@@ -60,4 +55,11 @@ To train the model, use the following command:
 
 ```bash
 python train.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset>
+
+To install the required dependencies, use the following:
+
+
+
+
+
 
