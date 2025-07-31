@@ -27,9 +27,9 @@ Key features:
 - CUDA (optional for GPU acceleration)
 
 ### Installing Dependencies 
-
+```bash
    pip install -r requirements.txt
-
+```
 ## Usage
 
 1. **Dataset**:
@@ -63,10 +63,10 @@ Key features:
 ## Training and Testing
 
 To train the model, use the following command:
-
+```bash
 python train.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset>
-
+```
 To test the model, use the following command:
-
+```bash
 python test.py --model <path_to_student_model> --dataset <path_to_test_dataset>
-
+```
