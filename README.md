@@ -8,10 +8,6 @@
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Training and Testing](#training-and-testing)
-5. [Ablation Studies](#ablation-studies)
-6. [Results](#results)
-7. [Contributions](#contributions)
-8. [License](#license)
 
 ## Introduction
 
@@ -34,22 +30,37 @@ Key features:
 
    pip install -r requirements.txt
 
-#### Data Preparation
+## Usage
 
-1. **Dataset**: This repository uses the **CR7-DET** dataset for training and testing. The dataset can be downloaded from the following link:
+1. **Dataset**:
+   This repository uses the **CR7-DET** dataset for training and testing. You can download the dataset from the following link:
 
    - [CR7-DET Dataset](<INSERT_YOUR_DATASET_LINK_HERE>)
 
+   Make sure to download and place the dataset in the appropriate directory for training and testing.
+
 2. **Data Splitting**: 
-   - The **CR7-DET** dataset is split into **three subsets**: **training**, **validation**, and **testing**.
-   - The data split is **80% for training**, **10% for validation**, and **10% for testing**. This ensures a balanced distribution for training the model, validating during training, and evaluating the final model's performance.
-   - We use the **validation** set during training for hyperparameter tuning and model performance evaluation. The **test** set is used only for final evaluation after training is complete.
+   The **CR7-DET** dataset is divided into **three subsets**:
+   - **Training**: 80% of the dataset is used for training the model.
+   - **Validation**: 10% of the dataset is reserved for validating the model during training.
+   - **Testing**: 10% of the dataset is used for evaluating the final model after training is complete.
+
+   This data split ensures that the model has a well-balanced distribution for:
+   - **Training**: Learning from the labeled data.
+   - **Validation**: Fine-tuning hyperparameters and model selection during training.
+   - **Testing**: Final evaluation of the trained model’s performance.
 
 3. **Preprocessing**: 
-   - The dataset undergoes several preprocessing steps, including resizing the images to a fixed size, normalization, and augmentation. The preprocessing steps are implemented in `data/preprocessing.py`.
-   - You can adjust the preprocessing settings by modifying the configuration in the script.
+   The dataset undergoes several preprocessing steps to ensure consistency and to prepare it for training:
+   - **Resizing**: All images are resized to a fixed size.
+   - **Normalization**: The pixel values of the images are normalized to a standard range (e.g., 0 to 1 or -1 to 1).
+   - **Augmentation**: Random augmentations are applied to improve model generalization (such as rotation, flipping, etc.).
 
-### Training
+   The preprocessing steps are implemented in `data/preprocessing.py`. You can modify the configuration in this script if you wish to adjust the preprocessing settings according to your needs.
+
+
+
+## Training and Testing
 
 To train the model, use the following command:
 
