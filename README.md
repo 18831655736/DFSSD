@@ -31,7 +31,6 @@ Key features:
 - CUDA (optional for GPU acceleration)
 
 ### Installing Dependencies 
-   '''bash
 
    pip install -r requirements.txt
 
