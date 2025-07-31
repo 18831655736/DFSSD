@@ -55,10 +55,21 @@ In addition, the **training set** is split into **labeled** and **unlabeled** da
 
 ## Training and Testing
 
-To train the model, use the following command:
+To pre-train the teacher model, use the following command:
 ```bash
-python train.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset>
+python main.py --teacher_model <path_to_teacher_model>  --dataset <path_to_dataset>
 ```
+
+To train the distillation model, use the following command:
+```bash
+python KD.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset> --distillation_type <distillation_method> --model_choice <teacher_or_student>
+```
+
+To train the semi-supervised distillation model, use the following command:
+```bash
+python SSKD.py --teacher_model <path_to_teacher_model> --student_model <path_to_student_model> --dataset <path_to_dataset> --threshold <pseudo_label_threshold>
+```
+
 To test the model, use the following command:
 ```bash
 python test.py --model <path_to_student_model> --dataset <path_to_test_dataset>
